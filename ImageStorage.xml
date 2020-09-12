@@ -4,6 +4,18 @@
         <name>ImageStorage</name>
     </assembly>
     <members>
+        <member name="T:ImageStorage.Controllers.ImageController">
+            <summary>
+            Image storage contoller
+            </summary>
+        </member>
+        <member name="M:ImageStorage.Controllers.ImageController.#ctor(ImageStorage.Services.IMagick,ImageStorage.Services.IStorage)">
+            <summary>
+            DI frough constructor
+            </summary>
+            <param name="magickService">Magick service</param>
+            <param name="storageService">Storage service</param>
+        </member>
         <member name="M:ImageStorage.Controllers.ImageController.Add(System.String,System.Nullable{System.Guid})">
              <summary>
              Add image
@@ -21,6 +33,12 @@
         <member name="M:ImageStorage.Controllers.ImageController.Get(System.Nullable{System.Guid})">
             <summary>
             Get image 
+            </summary>
+            <param name="id">image id</param>
+        </member>
+        <member name="M:ImageStorage.Controllers.ImageController.GetPrevios(System.Guid)">
+            <summary>
+            Get previos image 
             </summary>
             <param name="id">image id</param>
         </member>
@@ -89,6 +107,47 @@
             <param name="img">Image</param>
             <returns></returns>
         </member>
+        <member name="T:ImageStorage.Services.IStorage">
+            <summary>
+            Storage interface
+            </summary>
+        </member>
+        <member name="M:ImageStorage.Services.IStorage.GetImage(System.Guid)">
+            <summary>
+            Get image
+            </summary>
+            <param name="id">id image</param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageStorage.Services.IStorage.GetPreviosImage(System.Guid)">
+            <summary>
+            Get previos image
+            </summary>
+            <param name="id">id image</param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageStorage.Services.IStorage.GetImagePath(System.Guid)">
+            <summary>
+            Get image path
+            </summary>
+            <param name="id">id image</param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageStorage.Services.IStorage.SaveImage(System.Guid,System.Byte[])">
+            <summary>
+            Save image
+            </summary>
+            <param name="parrentId">parrent id image</param>
+            <param name="image">image</param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageStorage.Services.IStorage.DeleteImage(System.Guid)">
+            <summary>
+            Delete image
+            </summary>
+            <param name="id">id image</param>
+            <returns></returns>
+        </member>
         <member name="T:ImageStorage.Services.Magick">
             <inheritdoc cref="T:ImageStorage.Services.IMagick"/>
         </member>
@@ -100,6 +159,29 @@
         </member>
         <member name="M:ImageStorage.Services.Magick.MakeTransperent(System.Byte[])">
             <inheritdoc cref="M:ImageStorage.Services.IMagick.MakeTransperent(System.Byte[])"/>
+        </member>
+        <member name="T:ImageStorage.Services.Storage">
+            <inheritdoc cref="T:ImageStorage.Services.IStorage"/>
+        </member>
+        <member name="P:ImageStorage.Services.Storage.StoragePath">
+            <summary>
+            Storage path
+            </summary>
+        </member>
+        <member name="M:ImageStorage.Services.Storage.SaveImage(System.Guid,System.Byte[])">
+            <inheritdoc cref="M:ImageStorage.Services.IStorage.SaveImage(System.Guid,System.Byte[])"/>
+        </member>
+        <member name="M:ImageStorage.Services.Storage.DeleteImage(System.Guid)">
+            <inheritdoc cref="M:ImageStorage.Services.IStorage.DeleteImage(System.Guid)"/>
+        </member>
+        <member name="M:ImageStorage.Services.Storage.GetImagePath(System.Guid)">
+            <inheritdoc cref="M:ImageStorage.Services.IStorage.GetImagePath(System.Guid)"/>
+        </member>
+        <member name="M:ImageStorage.Services.Storage.GetImage(System.Guid)">
+            <inheritdoc cref="M:ImageStorage.Services.IStorage.GetImage(System.Guid)"/>
+        </member>
+        <member name="M:ImageStorage.Services.Storage.GetPreviosImage(System.Guid)">
+            <inheritdoc cref="M:ImageStorage.Services.IStorage.GetPreviosImage(System.Guid)"/>
         </member>
     </members>
 </doc>

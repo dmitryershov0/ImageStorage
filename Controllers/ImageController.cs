@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ImageStorage.Controllers
 {
+	/// <summary>
+	/// Image storage contoller
+	/// </summary>
 	[ApiController]
 	[Route("api/[controller]/v1")]
 	public class ImageController : ControllerBase
@@ -12,6 +15,11 @@ namespace ImageStorage.Controllers
 		private readonly IMagick _magickService;
 		private readonly IStorage _storageService;
 
+		/// <summary>
+		/// DI frough constructor
+		/// </summary>
+		/// <param name="magickService">Magick service</param>
+		/// <param name="storageService">Storage service</param>
 		public ImageController(IMagick magickService, IStorage storageService)
 		{
 			_magickService = magickService;
@@ -49,6 +57,17 @@ namespace ImageStorage.Controllers
 		public ActionResult<string> Get(Guid? id = null)
 		{
 			var imgByte = _storageService.GetImage(id.GetValueOrDefault());
+			return imgByte.GetBase64String();
+		}
+
+		/// <summary>
+		/// Get previos image 
+		/// </summary>
+		/// <param name="id">image id</param>
+		[HttpGet("getprevios/{id}")]
+		public ActionResult<string> GetPrevios(Guid id)
+		{
+			var imgByte = _storageService.GetPreviosImage(id);
 			return imgByte.GetBase64String();
 		}
 

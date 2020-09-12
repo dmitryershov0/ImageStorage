@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 namespace ImageStorage
 {
 	public class Startup
@@ -32,8 +31,16 @@ namespace ImageStorage
 			{
 				options.Level = CompressionLevel.Fastest;
 			});
+
+			#region DI
+			services.Add(new ServiceDescriptor(typeof(IRedis),
+				new Redis(Configuration["Redis:Host"],
+				Configuration["Redis:Port"])));    // singleton
 			services.AddScoped<IMagick, Magick>();
 			services.AddScoped<IStorage, Storage>();
+			#endregion DI
+
+			//swagger
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo
@@ -60,6 +67,8 @@ namespace ImageStorage
 			{
 				app.UseHsts();
 			}
+
+			#region swagger
 			app.UseSwagger(c =>
 			{
 				c.SerializeAsV2 = true;
@@ -71,6 +80,7 @@ namespace ImageStorage
 			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 			});
+			#endregion
 			app.UseStaticFiles();
 			app.UseHttpsRedirection();
 			app.UseMvc();
