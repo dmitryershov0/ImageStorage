@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ImageStorage</name>
+    </assembly>
+    <members>
+        <member name="M:ImageStorage.Controllers.ImageController.Add(System.String,System.Nullable{System.Guid})">
+             <summary>
+             Add image
+             <remarks>
+             Sample request:
+            
+                 POST imgage Base64String from body
+            
+             </remarks>
+             </summary>
+             <param name="parrentId">Previos image id</param>
+             <param name="img">image</param>
+             <returns>Id image</returns>
+        </member>
+        <member name="M:ImageStorage.Controllers.ImageController.Get(System.Nullable{System.Guid})">
+            <summary>
+            Get image 
+            </summary>
+            <param name="id">image id</param>
+        </member>
+        <member name="M:ImageStorage.Controllers.ImageController.GetCircle(System.Nullable{System.Guid})">
+            <summary>
+            Get circle image
+            </summary>
+            <param name="id">image id</param>
+        </member>
+        <member name="M:ImageStorage.Controllers.ImageController.GetResize(System.Int32,System.Int32,System.Nullable{System.Guid})">
+            <summary>
+            Get resize image
+            </summary>
+            <param name="id">image id</param>
+            <param name="height">height</param>
+            <param name="width">width</param>
+        </member>
+        <member name="M:ImageStorage.Controllers.ImageController.Delete(System.Guid)">
+            <summary>
+            Delete image
+            </summary>
+            <param name="id">Id image</param>
+            <response code="201">Returns true</response>
+            <response code="400">Return false if try delete default image</response>  
+        </member>
+        <member name="T:ImageStorage.Models.StorageItem">
+            <summary>
+            Item redis storage
+            </summary>
+        </member>
+        <member name="P:ImageStorage.Models.StorageItem.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:ImageStorage.Models.StorageItem.ParrentId">
+            <summary>
+            Parrent Id default Guid.Empty
+            </summary>
+        </member>
+        <member name="T:ImageStorage.Services.IMagick">
+            <summary>
+            Interface for works Magick.NET library
+            </summary>
+        </member>
+        <member name="M:ImageStorage.Services.IMagick.MakeCircle(System.Byte[])">
+            <summary>
+            Make circle image
+            </summary>
+            <param name="img">image</param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageStorage.Services.IMagick.MakeResize(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Make resize image
+            </summary>
+            <param name="img">image</param>
+            <param name="heigth">heigth</param>
+            <param name="width">width</param>
+            <returns></returns>
+        </member>
+        <member name="M:ImageStorage.Services.IMagick.MakeTransperent(System.Byte[])">
+            <summary>
+            Сhange white background to transparent
+            </summary>
+            <param name="img">Image</param>
+            <returns></returns>
+        </member>
+        <member name="T:ImageStorage.Services.Magick">
+            <inheritdoc cref="T:ImageStorage.Services.IMagick"/>
+        </member>
+        <member name="M:ImageStorage.Services.Magick.MakeCircle(System.Byte[])">
+            <inheritdoc cref="M:ImageStorage.Services.IMagick.MakeCircle(System.Byte[])"/>
+        </member>
+        <member name="M:ImageStorage.Services.Magick.MakeResize(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc cref="M:ImageStorage.Services.IMagick.MakeResize(System.Byte[],System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:ImageStorage.Services.Magick.MakeTransperent(System.Byte[])">
+            <inheritdoc cref="M:ImageStorage.Services.IMagick.MakeTransperent(System.Byte[])"/>
+        </member>
+    </members>
+</doc>

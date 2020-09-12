@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageStorage", "ImageStorage.csproj", "{E426D19B-3D50-491E-AD1B-A37FB2A79FAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageStorage.Tests", "..\ImageStorage.Tests\ImageStorage.Tests.csproj", "{E8BD5479-2B77-45FC-B02A-4BC02714D793}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E426D19B-3D50-491E-AD1B-A37FB2A79FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E426D19B-3D50-491E-AD1B-A37FB2A79FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E426D19B-3D50-491E-AD1B-A37FB2A79FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E426D19B-3D50-491E-AD1B-A37FB2A79FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8BD5479-2B77-45FC-B02A-4BC02714D793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8BD5479-2B77-45FC-B02A-4BC02714D793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8BD5479-2B77-45FC-B02A-4BC02714D793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8BD5479-2B77-45FC-B02A-4BC02714D793}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AE62DD5-BB13-4C6C-A89C-DAF4F92AC29D}
+	EndGlobalSection
+EndGlobal
